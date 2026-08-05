@@ -1,0 +1,268 @@
+{
+  "jobs": [
+    {
+      "id": "job-1",
+      "title": "Director: Strategic Partnerships and External Capacity Development",
+      "department": "Impact Centre",
+      "grantCode": "HSRC-EXEC-2026-08",
+      "description": "The Human Sciences Research Council (HSRC) is seeking an experienced, visionary Director to lead Strategic Partnerships and External Capacity Development. The successful incumbent will coordinate national and international research networks, secure strategic funding partnerships, and enhance capacity building in social science research methodologies.",
+      "requirements": [
+        "Ph.D. in Social Sciences, Development Studies, Public Policy, or related academic discipline",
+        "Minimum 8 years of research leadership experience with a proven high-impact publication record",
+        "Demonstrated track record of securing international donor funding and research grants",
+        "Excellent stakeholder relations and capacity building capability in South Africa and across the African continent"
+      ],
+      "status": "active",
+      "datePosted": "2026-06-10",
+      "workplaceType": "onsite",
+      "province": "Gauteng",
+      "townCity": "Pretoria",
+      "category": "Executive",
+      "referenceNumber": "HSRC-EXEC-2026-08",
+      "dateClosing": "2026/07/24"
+    },
+    {
+      "id": "job-2",
+      "title": "Manager: Strategic Partnerships and Internationalisation",
+      "department": "Business Development",
+      "grantCode": "HSRC-MNG-2026-12",
+      "description": "We are looking for a highly capable Manager to drive internationalisation initiatives, foster strategic bilateral research agreements, and manage relationships with global science councils and multinational development agencies.",
+      "requirements": [
+        "Master's Degree in International Relations, Development Studies, or Social Sciences",
+        "At least 5 years experience in managing international partnership networks or research administration",
+        "Proficiency in project management frameworks and corporate social investment programs",
+        "Experience collaborating with international research consortiums (e.g., European Union, AU, UN)"
+      ],
+      "status": "active",
+      "datePosted": "2026-07-01",
+      "workplaceType": "hybrid",
+      "province": "Gauteng",
+      "townCity": "Pretoria",
+      "category": "Management",
+      "referenceNumber": "HSRC-MNG-2026-12",
+      "dateClosing": "2026/07/24"
+    },
+    {
+      "id": "job-3",
+      "title": "Stakeholder and Partnership Officer",
+      "department": "Corporate Services",
+      "grantCode": "HSRC-ADM-2026-44",
+      "description": "The Corporate Services department requires a Stakeholder and Partnership Officer to manage public affairs, coordinate inter-governmental relations, maintain database registers of institutional partners, and support executive outreach.",
+      "requirements": [
+        "Bachelor's Degree in Communication, Public Relations, or Social Sciences",
+        "3 years of experience in public affairs, community development, or stakeholder engagement",
+        "Strong writing skills, event management experience, and digital collaboration tool expertise"
+      ],
+      "status": "active",
+      "datePosted": "2026-07-02",
+      "workplaceType": "onsite",
+      "province": "Gauteng",
+      "townCity": "Pretoria",
+      "category": "Admin",
+      "referenceNumber": "HSRC-ADM-2026-44",
+      "dateClosing": "2026/07/24"
+    },
+    {
+      "id": "job-4",
+      "title": "Proofreaders",
+      "department": "Human and Social Capabilities",
+      "grantCode": "HSRC-RES-2026-10",
+      "description": "HSRC invites applications for temporary or contract Proofreaders to review, copyedit, and formatting academic monographs, research briefs, policy documents, and survey reports prior to publication.",
+      "requirements": [
+        "Degree in English, Linguistics, Journalism, or Social Sciences",
+        "Proven experience copyediting and proofreading high-quality academic publications, APA/Chicago style sheets",
+        "Outstanding attention to detail and ability to work under strict publishing deadlines"
+      ],
+      "status": "active",
+      "datePosted": "2026-07-05",
+      "workplaceType": "hybrid",
+      "province": "Gauteng",
+      "townCity": "Pretoria, Cape Town, KZN",
+      "category": "Research",
+      "referenceNumber": "HSRC-RES-2026-10",
+      "dateClosing": "2026/07/15"
+    },
+    {
+      "id": "job-5",
+      "title": "HSRC Language Editors",
+      "department": "Human and Social Capabilities",
+      "grantCode": "HSRC-RES-2026-11",
+      "description": "We require experienced academic Language Editors to polish scientific proposals, translate complex jargon into policy-friendly language, and optimize research manuscripts for international peer-reviewed journals.",
+      "requirements": [
+        "Postgraduate degree in English, Applied Linguistics, or a Social Sciences field",
+        "Minimum 5 years of editing academic manuscripts in high-impact publishing houses",
+        "Knowledge of global research standards and quantitative/qualitative formatting conventions"
+      ],
+      "status": "active",
+      "datePosted": "2026-07-05",
+      "workplaceType": "remote",
+      "province": "Gauteng",
+      "townCity": "Pretoria, Cape Town, KZN",
+      "category": "Research",
+      "referenceNumber": "HSRC-RES-2026-11",
+      "dateClosing": "2026/07/15"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand-1",
+      "jobId": "job-1",
+      "name": "Dr. Elizabeth Chen",
+      "email": "e.chen@university.edu",
+      "phone": "+27 (0) 12 302 2000",
+      "orcid": "0000-0002-1823-1249",
+      "scholarLink": "https://scholar.google.com/citations?user=ChenBioinfoExample",
+      "hIndex": 14,
+      "stage": "committee_review",
+      "dateApplied": "2026-06-15",
+      "researchProposal": "Integrating Multi-Omic Single-Cell Sequencing and Spatial Transcriptomics for Computational Oncology.",
+      "education": "Ph.D. in Genomics from Stanford University (2023)",
+      "grantHistory": "NSF Postdoctoral Research Fellowship ($180,000, 2024-2026)",
+      "publications": [
+        {
+          "title": "Single-cell mapping of tumour heterogeneity in computational lung oncology",
+          "journal": "Nature Communications",
+          "year": 2024,
+          "citations": 112
+        },
+        {
+          "title": "A high-performance sequence alignment algorithm using sparse GPU tensor matrices",
+          "journal": "Bioinformatics",
+          "year": 2023,
+          "citations": 45
+        },
+        {
+          "title": "Graph neural networks for ligand-receptor binding prediction in cancer microenvironments",
+          "journal": "Journal of Computational Biology",
+          "year": 2025,
+          "citations": 18
+        }
+      ],
+      "cvParsedData": {
+        "education": [
+          { "degree": "Ph.D. in Genomics", "institution": "Stanford University", "year": 2023 },
+          { "degree": "B.S. in Computer Science", "institution": "UC Berkeley", "year": 2019 }
+        ],
+        "publications": [
+          {
+            "title": "Single-cell mapping of tumour heterogeneity in computational lung oncology",
+            "journal": "Nature Communications",
+            "year": 2024,
+            "citations": 112
+          },
+          {
+            "title": "A high-performance sequence alignment algorithm using sparse GPU tensor matrices",
+            "journal": "Bioinformatics",
+            "year": 2023,
+            "citations": 45
+          },
+          {
+            "title": "Graph neural networks for ligand-receptor binding prediction in cancer microenvironments",
+            "journal": "Journal of Computational Biology",
+            "year": 2025,
+            "citations": 18
+          }
+        ],
+        "grantHistory": [
+          { "title": "NSF Postdoctoral Research Fellowship", "fundingAgency": "National Science Foundation", "amount": "$180,000", "year": 2024 }
+        ],
+        "hIndex": 14,
+        "extractedKeywords": ["Single-cell transcriptomics", "GPU parallel alignment", "Graph neural networks", "Cancer oncology"],
+        "summary": "Outstanding computational biologist with highly-cited first-author publications in Nature Communications and Bioinformatics. Exceptional pedigree with Stanford and Berkeley degrees, currently supported by an active NSF fellowship."
+      },
+      "cvTextRaw": "Dr. Elizabeth Chen\nEmail: e.chen@university.edu\nEducation:\n- Ph.D. in Genomics, Stanford University, 2023\n- B.S. in Computer Science, UC Berkeley, 2019\nPublications:\n1. Single-cell mapping of tumour heterogeneity, Nature Communications, 2024 (112 citations)\n2. Sparse GPU tensor alignment, Bioinformatics, 2023 (45 citations)\nGrants:\n- NSF Postdoctoral Fellowship ($180k, 2024)"
+    },
+    {
+      "id": "cand-2",
+      "jobId": "job-2",
+      "name": "Dr. Marcus Vance",
+      "email": "m.vance@caltech.edu",
+      "phone": "+27 (0) 21 466 8000",
+      "orcid": "0000-0001-9034-7711",
+      "scholarLink": "https://scholar.google.com/citations?user=VancePhysicsExample",
+      "hIndex": 8,
+      "stage": "applied",
+      "dateApplied": "2026-07-02",
+      "researchProposal": "Lattice Quantum Field Simulators using Tensor Processing Units.",
+      "education": "Ph.D. in Theoretical Physics from Caltech (2024)",
+      "grantHistory": "DOE Graduate Research Fellowship ($120,000, 2021-2024)",
+      "publications": [
+        {
+          "title": "Simulating high-energy gluonic interactions on commercial tensor engines",
+          "journal": "Physical Review D",
+          "year": 2024,
+          "citations": 32
+        },
+        {
+          "title": "A fast CUDA solver for multi-dimensional Lattice QCD calculations",
+          "journal": "Computer Physics Communications",
+          "year": 2023,
+          "citations": 15
+        }
+      ],
+      "cvParsedData": {
+        "education": [
+          { "degree": "Ph.D. in Theoretical Physics", "institution": "Caltech", "year": 2024 },
+          { "degree": "M.S. in Physics", "institution": "MIT", "year": 2020 }
+        ],
+        "publications": [
+          {
+            "title": "Simulating high-energy gluonic interactions on commercial tensor engines",
+            "journal": "Physical Review D",
+            "year": 2024,
+            "citations": 32
+          },
+          {
+            "title": "A fast CUDA solver for multi-dimensional Lattice QCD calculations",
+            "journal": "Computer Physics Communications",
+            "year": 2023,
+            "citations": 15
+          }
+        ],
+        "grantHistory": [
+          { "title": "DOE Graduate Research Fellowship", "fundingAgency": "Department of Energy", "amount": "$120,000", "year": 2021 }
+        ],
+        "hIndex": 8,
+        "extractedKeywords": ["Lattice QCD", "Tensor processing units", "CUDA development", "High-energy physics"],
+        "summary": "Specialist in lattice QCD simulators with strong mathematical background and practical GPU/C++ coding skills. Deep knowledge of theoretical gauge fields and TPU parallel processing."
+      },
+      "cvTextRaw": "Dr. Marcus Vance\nPh.D. Theoretical Physics, Caltech, 2024.\nM.S. Physics, MIT, 2020.\nPublications: Simulating high-energy gluonic interactions on TPUs, Physical Review D, 2024.\nGrants: DOE Graduate Fellowship 2021."
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "eval-1",
+      "candidateId": "cand-1",
+      "reviewerName": "Dr. Sarah Jenkins",
+      "reviewerRole": "reviewer",
+      "scoreScientificMerit": 5,
+      "scoreFundingPotential": 4,
+      "scoreTeachingAbility": 4,
+      "comments": "Elizabeth Chen presents an outstanding research proposal on single-cell computational oncology. She has demonstrated high technical ability and scientific depth in her Nature Communications paper. I strongly recommend her for the bioinformatics opening.",
+      "blindedComments": "The candidate presents an outstanding research proposal on single-cell computational oncology. The candidate has demonstrated high technical ability and scientific depth in a peer-reviewed Nature Communications paper. The reviewer strongly recommends the candidate for the bioinformatics opening.",
+      "dateSubmitted": "2026-06-20"
+    }
+  ],
+  "referees": [
+    {
+      "id": "ref-1",
+      "candidateId": "cand-1",
+      "name": "Prof. David K. Gabor",
+      "email": "dgabor@stanford.edu",
+      "institution": "Stanford University Department of Genetics",
+      "status": "submitted",
+      "token": "tok_chen_gabor_123",
+      "letterContent": "I have supervised Elizabeth's doctoral studies for 4 years. She is exceptionally talented, highly collaborative, and stands in the top 5% of doctoral researchers I have advised over two decades. Her capacity for bridging computer science and computational biology is first-rate.",
+      "dateUploaded": "2026-06-18"
+    },
+    {
+      "id": "ref-2",
+      "candidateId": "cand-1",
+      "name": "Dr. Arthur Pendelton",
+      "email": "a.pendelton@sanger.ac.uk",
+      "institution": "Wellcome Sanger Institute",
+      "status": "pending",
+      "token": "tok_chen_arthur_456"
+    }
+  ]
+}
