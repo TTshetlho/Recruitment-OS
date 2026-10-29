@@ -1,35 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { Candidate, JobOpening } from "./types";
-import { GlobalHeader, PortalTab } from "./components/GlobalHeader";
-import { PageHeader } from "./components/PageHeader";
-import { JobVacanciesExplorer } from "./components/JobVacanciesExplorer";
-import { CandidateDashboardTable } from "./components/CandidateDashboardTable";
-import { JobApplicationStepForm } from "./components/JobApplicationStepForm";
-import { DesignTokensShowcase } from "./components/DesignTokensShowcase";
-import { PostJobModal } from "./components/PostJobModal";
-import { PlusCircle, Search, FileText, CheckCircle2, Sliders, ExternalLink } from "lucide-react";
-import { Badge } from "./components/design-system/Badge";
+import { ApplicantPortal } from "./components/ApplicantPortal";
+import { AdminPortal } from "./components/AdminPortal";
+import { ShieldCheck, UserCheck, ArrowRight, Layers, Sparkles, Globe, Lock } from "lucide-react";
+
+export type PortalMode = "frontend" | "backend";
 
 export default function App() {
   const [jobs, setJobs] = useState<JobOpening[]>([]);
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Active navigation tab
-  const [activeTab, setActiveTab] = useState<PortalTab>("vacancies");
-  
-  // User role state: "applicant" or "recruiter"
-  const [userRole, setUserRole] = useState<"applicant" | "recruiter">("recruiter");
+  // Top-level separation: "frontend" (Applicant / Job Seeker) vs "backend" (Admin / Recruiter / Committee)
+  const [portalMode, setPortalMode] = useState<PortalMode>(() => {
+    // Check URL query param if present
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const modeParam = params.get("mode") || params.get("portal");
+      if (modeParam === "admin" || modeParam === "backend") return "backend";
+      if (modeParam === "frontend" || modeParam === "applicant") return "frontend";
+    }
+    // Default to "frontend" for job seeker experience, or recruiter can toggle immediately
+    return "frontend";
+  });
 
-  // Preselected job for application flow
+  // Preselected job when an applicant clicks "Apply" from a job card
   const [preselectedJobId, setPreselectedJobId] = useState<string | undefined>(undefined);
-
-  // Post Job modal state
-  const [isPostJobModalOpen, setIsPostJobModalOpen] = useState(false);
 
   useEffect(() => {
     fetchInitialData();
   }, []);
+
+  // Sync portal mode with URL search param without page reload
+  const handleSetPortalMode = (mode: PortalMode) => {
+    setPortalMode(mode);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("mode", mode === "backend" ? "admin" : "careers");
+      window.history.pushState({}, "", url.toString());
+    }
+  };
 
   const fetchInitialData = async () => {
     try {
@@ -51,11 +61,6 @@ export default function App() {
     }
   };
 
-  const handleApplyForJob = (job: JobOpening) => {
-    setPreselectedJobId(job.id);
-    setActiveTab("apply");
-  };
-
   const handleApplySubmit = async (candData: {
     jobId: string;
     name: string;
@@ -67,7 +72,7 @@ export default function App() {
     cvTextRaw?: string;
   }): Promise<boolean> => {
     try {
-      // 1. Create candidate
+      // 1. Create candidate record
       const createRes = await fetch("/api/candidates", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -156,7 +161,6 @@ export default function App() {
       if (res.ok) {
         const created = await res.json();
         setJobs((prev) => [created, ...prev]);
-        setActiveTab("vacancies");
       }
     } catch (err) {
       console.error("Error creating job:", err);
@@ -169,7 +173,7 @@ export default function App() {
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-4 border-[#003366] border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs font-bold text-[#003366] uppercase tracking-wider">
-            Loading HSRC Recruitment Portal...
+            Loading HSRC Recruitment Portal Database...
           </p>
         </div>
       </div>
@@ -177,188 +181,76 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-[#1A1A1A] font-sans flex flex-col selection:bg-[#00A8B5]/20 selection:text-[#003366]">
-      {/* 1. Global Header Component */}
-      <GlobalHeader
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        userRole={userRole}
-        onToggleRole={() => setUserRole((r) => (r === "recruiter" ? "applicant" : "recruiter"))}
-        onOpenPostJob={() => setIsPostJobModalOpen(true)}
-      />
-
-      {/* 2. Standardized Page Hierarchy Header */}
-      {activeTab === "vacancies" && (
-        <PageHeader
-          title="Current Job Vacancies"
-          subtitle="Explore active research, academic, and executive career opportunities across the Human Sciences Research Council in South Africa."
-          breadcrumbs={[{ label: "Career Opportunities" }]}
-          tag={
-            <Badge variant="primary" size="sm">
-              {jobs.length} Active Positions
-            </Badge>
-          }
-          primaryAction={{
-            label: "Submit Application",
-            onClick: () => {
-              setPreselectedJobId(undefined);
-              setActiveTab("apply");
-            },
-            icon: <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" />,
-          }}
-          secondaryAction={
-            userRole === "recruiter"
-              ? {
-                  label: "Post New Vacancy",
-                  onClick: () => setIsPostJobModalOpen(true),
-                  icon: <PlusCircle className="w-4 h-4 text-slate-500" />,
-                }
-              : undefined
-          }
-        />
-      )}
-
-      {activeTab === "dashboard" && (
-        <PageHeader
-          title="Candidate Application Dashboard"
-          subtitle="Real-time recruitment pipeline table tracking submitted applicant dossiers, ORCID identifiers, and review stages."
-          breadcrumbs={[
-            { label: "Talent Acquisition", onClick: () => setActiveTab("vacancies") },
-            { label: "Application Table" },
-          ]}
-          tag={
-            <Badge variant="shortlisted" size="sm">
-              {candidates.length} Registered Dossiers
-            </Badge>
-          }
-          primaryAction={{
-            label: "Search Vacancies",
-            variant: "secondary",
-            onClick: () => setActiveTab("vacancies"),
-            icon: <Search className="w-4 h-4 text-[#008080]" />,
-          }}
-          secondaryAction={{
-            label: "New Application Form",
-            onClick: () => setActiveTab("apply"),
-            icon: <FileText className="w-4 h-4 text-slate-500" />,
-          }}
-        />
-      )}
-
-      {activeTab === "apply" && (
-        <PageHeader
-          title="Job Application Submission"
-          subtitle="Standardized 3-step application workflow with live validation, ORCID verification, and automated CV ingestion."
-          breadcrumbs={[
-            { label: "Vacancies", onClick: () => setActiveTab("vacancies") },
-            { label: "Application Form (Steps 1-3)" },
-          ]}
-          tag={
-            <Badge variant="info" size="sm">
-              Step-by-Step Flow
-            </Badge>
-          }
-          primaryAction={{
-            label: "Back to Vacancies",
-            variant: "secondary",
-            onClick: () => setActiveTab("vacancies"),
-            icon: <Search className="w-4 h-4 text-[#008080]" />,
-          }}
-        />
-      )}
-
-      {activeTab === "design_system" && (
-        <PageHeader
-          title="Design Tokens & Component Specifications"
-          subtitle="Comprehensive design system guidelines, color palettes, button hierarchies, form input states, and elevation specifications."
-          breadcrumbs={[
-            { label: "Brand Guidelines", onClick: () => setActiveTab("vacancies") },
-            { label: "Component Library" },
-          ]}
-          tag={
-            <Badge variant="secondary" size="sm">
-              v2.0 Design System
-            </Badge>
-          }
-          primaryAction={{
-            label: "Explore Live Portal",
-            onClick: () => setActiveTab("vacancies"),
-            icon: <Search className="w-4 h-4 text-white" />,
-          }}
-        />
-      )}
-
-      {/* 3. Main Content Container (Consistent 24px Padding & 12-Column Responsive Layout) */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        {activeTab === "vacancies" && (
-          <JobVacanciesExplorer
-            jobs={jobs}
-            onApplyForJob={handleApplyForJob}
-            onOpenPostJob={() => setIsPostJobModalOpen(true)}
-          />
-        )}
-
-        {activeTab === "dashboard" && (
-          <CandidateDashboardTable
-            candidates={candidates}
-            jobs={jobs}
-            userRole={userRole}
-            onUpdateCandidateStage={handleUpdateCandidateStage}
-            onNavigateToApply={() => setActiveTab("apply")}
-          />
-        )}
-
-        {activeTab === "apply" && (
-          <JobApplicationStepForm
-            jobs={jobs}
-            preselectedJobId={preselectedJobId}
-            onSuccessSubmit={handleApplySubmit}
-            onCancel={() => setActiveTab("vacancies")}
-          />
-        )}
-
-        {activeTab === "design_system" && <DesignTokensShowcase />}
-      </main>
-
-      {/* 4. Standardized Global Footer */}
-      <footer className="bg-white border-t border-slate-200 py-8 px-4 sm:px-6 lg:px-8 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <div className="min-h-screen flex flex-col">
+      {/* 
+        PERSISTENT ENVIRONMENT SWITCHER BAR 
+        Allows immediate testing and transition between Front-End (Users/Applicants) and Back-End (Admin/Recruiters)
+      */}
+      <aside 
+        aria-label="Portal Mode Switcher" 
+        className="bg-slate-950 text-white px-4 py-2 border-b border-slate-800 text-xs font-medium z-50 sticky top-0"
+      >
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded bg-[#003366] text-white flex items-center justify-center font-bold text-[9px]">
-              HSRC
-            </div>
-            <span>© 2026 Human Sciences Research Council (HSRC). All Rights Reserved.</span>
+            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 bg-white/10 px-2 py-0.5 rounded">
+              Environment Router
+            </span>
+            <span className="text-slate-300 text-xs">
+              Portal Separation:{" "}
+              <strong className={portalMode === "frontend" ? "text-[#00A8B5]" : "text-amber-400"}>
+                {portalMode === "frontend" ? "Front-End (Applicant Careers Portal)" : "Back-End (Admin & ATS Workspace)"}
+              </strong>
+            </span>
           </div>
 
-          <div className="flex items-center gap-6 text-slate-600 font-medium">
+          <div className="flex items-center gap-2">
             <button
-              onClick={() => setActiveTab("design_system")}
-              className="hover:text-[#003366] hover:underline cursor-pointer"
+              onClick={() => handleSetPortalMode("frontend")}
+              className={`px-3 py-1 rounded text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                portalMode === "frontend"
+                  ? "bg-[#003366] text-white ring-1 ring-[#00A8B5] shadow-xs"
+                  : "bg-white/10 text-slate-300 hover:bg-white/20 hover:text-white"
+              }`}
             >
-              Design System Spec
+              <Globe className="w-3.5 h-3.5 text-[#00A8B5]" />
+              <span>Front-End (Users)</span>
             </button>
+
             <button
-              onClick={() => setActiveTab("vacancies")}
-              className="hover:text-[#003366] hover:underline cursor-pointer"
+              onClick={() => handleSetPortalMode("backend")}
+              className={`px-3 py-1 rounded text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                portalMode === "backend"
+                  ? "bg-amber-500 text-slate-950 ring-1 ring-amber-300 shadow-xs"
+                  : "bg-white/10 text-slate-300 hover:bg-white/20 hover:text-white"
+              }`}
             >
-              Browse Openings
-            </button>
-            <button
-              onClick={() => setActiveTab("dashboard")}
-              className="hover:text-[#003366] hover:underline cursor-pointer"
-            >
-              Application Dashboard
+              <Lock className="w-3.5 h-3.5" />
+              <span>Back-End (Admin)</span>
             </button>
           </div>
         </div>
-      </footer>
+      </aside>
 
-      {/* 5. Post Job Modal Dialog */}
-      <PostJobModal
-        isOpen={isPostJobModalOpen}
-        onClose={() => setIsPostJobModalOpen(false)}
-        onJobCreated={handleCreateJob}
-      />
+      {/* Render Selected Segment */}
+      {portalMode === "frontend" ? (
+        <ApplicantPortal
+          jobs={jobs}
+          candidates={candidates}
+          onApplySubmit={handleApplySubmit}
+          onSwitchToAdmin={() => handleSetPortalMode("backend")}
+          preselectedJobId={preselectedJobId}
+          onClearPreselectedJob={() => setPreselectedJobId(undefined)}
+        />
+      ) : (
+        <AdminPortal
+          jobs={jobs}
+          candidates={candidates}
+          onRefreshData={fetchInitialData}
+          onUpdateCandidateStage={handleUpdateCandidateStage}
+          onCreateJob={handleCreateJob}
+          onSwitchToPublic={() => handleSetPortalMode("frontend")}
+        />
+      )}
     </div>
   );
 }

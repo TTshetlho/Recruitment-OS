@@ -140,8 +140,16 @@
       ],
       "cvParsedData": {
         "education": [
-          { "degree": "Ph.D. in Genomics", "institution": "Stanford University", "year": 2023 },
-          { "degree": "B.S. in Computer Science", "institution": "UC Berkeley", "year": 2019 }
+          {
+            "degree": "Ph.D. in Genomics",
+            "institution": "Stanford University",
+            "year": 2023
+          },
+          {
+            "degree": "B.S. in Computer Science",
+            "institution": "UC Berkeley",
+            "year": 2019
+          }
         ],
         "publications": [
           {
@@ -164,13 +172,103 @@
           }
         ],
         "grantHistory": [
-          { "title": "NSF Postdoctoral Research Fellowship", "fundingAgency": "National Science Foundation", "amount": "$180,000", "year": 2024 }
+          {
+            "title": "NSF Postdoctoral Research Fellowship",
+            "fundingAgency": "National Science Foundation",
+            "amount": "$180,000",
+            "year": 2024
+          }
         ],
         "hIndex": 14,
-        "extractedKeywords": ["Single-cell transcriptomics", "GPU parallel alignment", "Graph neural networks", "Cancer oncology"],
+        "extractedKeywords": [
+          "Single-cell transcriptomics",
+          "GPU parallel alignment",
+          "Graph neural networks",
+          "Cancer oncology"
+        ],
         "summary": "Outstanding computational biologist with highly-cited first-author publications in Nature Communications and Bioinformatics. Exceptional pedigree with Stanford and Berkeley degrees, currently supported by an active NSF fellowship."
       },
-      "cvTextRaw": "Dr. Elizabeth Chen\nEmail: e.chen@university.edu\nEducation:\n- Ph.D. in Genomics, Stanford University, 2023\n- B.S. in Computer Science, UC Berkeley, 2019\nPublications:\n1. Single-cell mapping of tumour heterogeneity, Nature Communications, 2024 (112 citations)\n2. Sparse GPU tensor alignment, Bioinformatics, 2023 (45 citations)\nGrants:\n- NSF Postdoctoral Fellowship ($180k, 2024)"
+      "cvTextRaw": "Dr. Elizabeth Chen\nEmail: e.chen@university.edu\nEducation:\n- Ph.D. in Genomics, Stanford University, 2023\n- B.S. in Computer Science, UC Berkeley, 2019\nPublications:\n1. Single-cell mapping of tumour heterogeneity, Nature Communications, 2024 (112 citations)\n2. Sparse GPU tensor alignment, Bioinformatics, 2023 (45 citations)\nGrants:\n- NSF Postdoctoral Fellowship ($180k, 2024)",
+      "atsAssessment": {
+        "candidateId": "cand-1",
+        "jobId": "job-1",
+        "scannedAt": "2026-10-29T10:42:59.870Z",
+        "overallScore": 84,
+        "probabilityOfAlignment": 84,
+        "confidenceScore": 92,
+        "verdict": "Recommended",
+        "breakdown": {
+          "requirementsMatch": {
+            "score": 71,
+            "summary": "Candidate satisfies 3 of 4 stated mandatory qualifications.",
+            "criteria": [
+              {
+                "criterion": "Ph.D. in Social Sciences, Development Studies, Public Policy, or related academic discipline",
+                "matched": true,
+                "score": 95,
+                "evidence": "Verified doctoral degree in candidate education."
+              },
+              {
+                "criterion": "Minimum 8 years of research leadership experience with a proven high-impact publication record",
+                "matched": true,
+                "score": 95,
+                "evidence": "3 peer-reviewed publications identified with verified citations."
+              },
+              {
+                "criterion": "Demonstrated track record of securing international donor funding and research grants",
+                "matched": true,
+                "score": 92,
+                "evidence": "Demonstrated record of securing competitive external research funding."
+              },
+              {
+                "criterion": "Excellent stakeholder relations and capacity building capability in South Africa and across the African continent",
+                "matched": false,
+                "score": 0,
+                "evidence": "Lacks sufficient documented evidence in: excellent, stakeholder"
+              }
+            ]
+          },
+          "jobDescriptionFit": {
+            "score": 75,
+            "summary": "Alignment with Impact Centre core activities and research delivery mandate.",
+            "domainRelevance": "Direct operational and academic relevance for Director: Strategic Partnerships and External Capacity Development."
+          },
+          "keyResponsibilitiesAlignment": {
+            "score": 80,
+            "summary": "Demonstrates capability to execute strategic priorities and lead institutional deliverables.",
+            "competenciesIdentified": [
+              "Single-cell transcriptomics",
+              "GPU parallel alignment",
+              "Graph neural networks",
+              "Cancer oncology",
+              "Strategic Partnerships",
+              "Stakeholder Relations"
+            ],
+            "competenciesMissing": [
+              "Cross-institutional travel flexibility"
+            ]
+          },
+          "academicBibliometrics": {
+            "score": 100,
+            "hIndexEvaluation": "Verified h-Index of 14 demonstrates healthy citation momentum.",
+            "publicationEvaluation": "3 peer-reviewed contributions across academic literature.",
+            "grantCapacity": "NSF Postdoctoral Research Fellowship ($180,000, 2024-2026)"
+          }
+        },
+        "matchedKeywords": [
+          "Single-cell transcriptomics",
+          "GPU parallel alignment",
+          "Graph neural networks",
+          "Cancer oncology",
+          "Strategic Partnerships",
+          "Stakeholder Relations"
+        ],
+        "missingKeywords": [
+          "Cross-institutional travel flexibility"
+        ],
+        "executiveSummary": "Dr. Elizabeth Chen exhibits a 84% calculated probability of alignment for the Director: Strategic Partnerships and External Capacity Development role. Evaluated credentials match 3/4 core criteria.",
+        "atsRecommendation": "Auto-shortlist recommended. Direct candidate to committee interview stage."
+      }
     },
     {
       "id": "cand-2",
@@ -202,8 +300,16 @@
       ],
       "cvParsedData": {
         "education": [
-          { "degree": "Ph.D. in Theoretical Physics", "institution": "Caltech", "year": 2024 },
-          { "degree": "M.S. in Physics", "institution": "MIT", "year": 2020 }
+          {
+            "degree": "Ph.D. in Theoretical Physics",
+            "institution": "Caltech",
+            "year": 2024
+          },
+          {
+            "degree": "M.S. in Physics",
+            "institution": "MIT",
+            "year": 2020
+          }
         ],
         "publications": [
           {
@@ -220,13 +326,418 @@
           }
         ],
         "grantHistory": [
-          { "title": "DOE Graduate Research Fellowship", "fundingAgency": "Department of Energy", "amount": "$120,000", "year": 2021 }
+          {
+            "title": "DOE Graduate Research Fellowship",
+            "fundingAgency": "Department of Energy",
+            "amount": "$120,000",
+            "year": 2021
+          }
         ],
         "hIndex": 8,
-        "extractedKeywords": ["Lattice QCD", "Tensor processing units", "CUDA development", "High-energy physics"],
+        "extractedKeywords": [
+          "Lattice QCD",
+          "Tensor processing units",
+          "CUDA development",
+          "High-energy physics"
+        ],
         "summary": "Specialist in lattice QCD simulators with strong mathematical background and practical GPU/C++ coding skills. Deep knowledge of theoretical gauge fields and TPU parallel processing."
       },
       "cvTextRaw": "Dr. Marcus Vance\nPh.D. Theoretical Physics, Caltech, 2024.\nM.S. Physics, MIT, 2020.\nPublications: Simulating high-energy gluonic interactions on TPUs, Physical Review D, 2024.\nGrants: DOE Graduate Fellowship 2021."
+    },
+    {
+      "id": "cand-3",
+      "jobId": "job-1",
+      "name": "Prof. Sipho Mthembu",
+      "email": "s.mthembu@uct.ac.za",
+      "phone": "+27 (0) 21 650 3000",
+      "orcid": "0000-0003-4412-8890",
+      "scholarLink": "https://scholar.google.com/citations?user=MthembuDevStudies",
+      "hIndex": 18,
+      "stage": "shortlisted",
+      "dateApplied": "2026-06-18",
+      "researchProposal": "Strengthening Pan-African Research Consortia for Evidence-Based Social Policy and Sustainable Development.",
+      "education": "Ph.D. in Development Studies, University of Cape Town (2015)",
+      "grantHistory": "Ford Foundation International Grant ($1,200,000, 2022-2025); IDRC Pan-African Capacity Fellowship ($850,000, 2019-2022)",
+      "publications": [
+        {
+          "title": "Decolonising knowledge systems: Institutional partnerships and capacity development in Southern Africa",
+          "journal": "Development Southern Africa",
+          "year": 2023,
+          "citations": 142
+        },
+        {
+          "title": "Comparative public policy frameworks across SADC science councils",
+          "journal": "African Affairs",
+          "year": 2022,
+          "citations": 98
+        },
+        {
+          "title": "Socio-economic impacts of multi-stakeholder research governance",
+          "journal": "World Development",
+          "year": 2024,
+          "citations": 76
+        }
+      ],
+      "cvParsedData": {
+        "education": [
+          {
+            "degree": "Ph.D. in Development Studies",
+            "institution": "University of Cape Town",
+            "year": 2015
+          },
+          {
+            "degree": "M.Phil. in Public Policy",
+            "institution": "Stellenbosch University",
+            "year": 2010
+          }
+        ],
+        "publications": [
+          {
+            "title": "Decolonising knowledge systems: Institutional partnerships",
+            "journal": "Development Southern Africa",
+            "year": 2023,
+            "citations": 142
+          },
+          {
+            "title": "Comparative public policy frameworks across SADC",
+            "journal": "African Affairs",
+            "year": 2022,
+            "citations": 98
+          },
+          {
+            "title": "Socio-economic impacts of research governance",
+            "journal": "World Development",
+            "year": 2024,
+            "citations": 76
+          }
+        ],
+        "grantHistory": [
+          {
+            "title": "Ford Foundation Research Initiative",
+            "fundingAgency": "Ford Foundation",
+            "amount": "$1,200,000",
+            "year": 2022
+          },
+          {
+            "title": "IDRC Pan-African Capacity Development",
+            "fundingAgency": "IDRC Canada",
+            "amount": "$850,000",
+            "year": 2019
+          }
+        ],
+        "hIndex": 18,
+        "extractedKeywords": [
+          "Development studies",
+          "Research partnerships",
+          "Strategic grant acquisition",
+          "Capacity building",
+          "Pan-African networks",
+          "Public policy"
+        ],
+        "summary": "Seasoned research director with over 11 years leading multi-institutional partnerships across Africa. Exceptional grant-winning record ($2M+) and high-impact social science publications."
+      },
+      "cvTextRaw": "Prof. Sipho Mthembu, Ph.D. Development Studies (UCT 2015). 11 years executive research leadership. Grants: Ford Foundation ($1.2M), IDRC ($850k). Over 40 peer-reviewed articles on institutional capacity building and African science council governance.",
+      "atsAssessment": {
+        "candidateId": "cand-3",
+        "jobId": "job-1",
+        "scannedAt": "2026-10-29T10:42:59.871Z",
+        "overallScore": 89,
+        "probabilityOfAlignment": 89,
+        "confidenceScore": 92,
+        "verdict": "Strongly Recommended",
+        "breakdown": {
+          "requirementsMatch": {
+            "score": 80,
+            "summary": "Candidate satisfies 3 of 4 stated mandatory qualifications.",
+            "criteria": [
+              {
+                "criterion": "Ph.D. in Social Sciences, Development Studies, Public Policy, or related academic discipline",
+                "matched": true,
+                "score": 95,
+                "evidence": "Verified doctoral degree in candidate education."
+              },
+              {
+                "criterion": "Minimum 8 years of research leadership experience with a proven high-impact publication record",
+                "matched": true,
+                "score": 95,
+                "evidence": "3 peer-reviewed publications identified with verified citations."
+              },
+              {
+                "criterion": "Demonstrated track record of securing international donor funding and research grants",
+                "matched": true,
+                "score": 92,
+                "evidence": "Demonstrated record of securing competitive external research funding."
+              },
+              {
+                "criterion": "Excellent stakeholder relations and capacity building capability in South Africa and across the African continent",
+                "matched": false,
+                "score": 36,
+                "evidence": "Lacks sufficient documented evidence in: excellent, stakeholder"
+              }
+            ]
+          },
+          "jobDescriptionFit": {
+            "score": 84,
+            "summary": "Alignment with Impact Centre core activities and research delivery mandate.",
+            "domainRelevance": "Direct operational and academic relevance for Director: Strategic Partnerships and External Capacity Development."
+          },
+          "keyResponsibilitiesAlignment": {
+            "score": 85,
+            "summary": "Demonstrates capability to execute strategic priorities and lead institutional deliverables.",
+            "competenciesIdentified": [
+              "Development studies",
+              "Research partnerships",
+              "Strategic grant acquisition",
+              "Capacity building",
+              "Strategic Partnerships",
+              "Stakeholder Relations"
+            ],
+            "competenciesMissing": [
+              "Cross-institutional travel flexibility"
+            ]
+          },
+          "academicBibliometrics": {
+            "score": 100,
+            "hIndexEvaluation": "Verified h-Index of 18 demonstrates healthy citation momentum.",
+            "publicationEvaluation": "3 peer-reviewed contributions across academic literature.",
+            "grantCapacity": "Ford Foundation International Grant ($1,200,000, 2022-2025); IDRC Pan-African Capacity Fellowship ($850,000, 2019-2022)"
+          }
+        },
+        "matchedKeywords": [
+          "Development studies",
+          "Research partnerships",
+          "Strategic grant acquisition",
+          "Capacity building",
+          "Strategic Partnerships",
+          "Stakeholder Relations"
+        ],
+        "missingKeywords": [
+          "Cross-institutional travel flexibility"
+        ],
+        "executiveSummary": "Prof. Sipho Mthembu exhibits a 89% calculated probability of alignment for the Director: Strategic Partnerships and External Capacity Development role. Evaluated credentials match 3/4 core criteria.",
+        "atsRecommendation": "Auto-shortlist recommended. Direct candidate to committee interview stage."
+      }
+    },
+    {
+      "id": "cand-4",
+      "jobId": "job-2",
+      "name": "Zanele Ndlovu",
+      "email": "zanele.ndlovu@globalpolicy.org.za",
+      "phone": "+27 (0) 11 717 1000",
+      "orcid": "0000-0002-9844-3120",
+      "scholarLink": "https://scholar.google.com/citations?user=NdlovuIntRel",
+      "hIndex": 9,
+      "stage": "applied",
+      "dateApplied": "2026-07-04",
+      "researchProposal": "Bilateral Science Diplomacy and Cross-Border Knowledge Exchange Frameworks in the Global South.",
+      "education": "Master of Arts in International Relations, University of the Witwatersrand (2019)",
+      "grantHistory": "European Commission Erasmus+ Capacity Building Lead Coordinator (€450,000, 2021-2024)",
+      "publications": [
+        {
+          "title": "Bilateral scientific collaboration between the African Union and European Union: A decade in review",
+          "journal": "South African Journal of International Affairs",
+          "year": 2023,
+          "citations": 48
+        },
+        {
+          "title": "Science diplomacy as an instrument for African developmental integration",
+          "journal": "Global Governance",
+          "year": 2021,
+          "citations": 35
+        }
+      ],
+      "cvParsedData": {
+        "education": [
+          {
+            "degree": "M.A. in International Relations",
+            "institution": "University of the Witwatersrand",
+            "year": 2019
+          },
+          {
+            "degree": "B.A. Honours in Political Science",
+            "institution": "University of Pretoria",
+            "year": 2016
+          }
+        ],
+        "publications": [
+          {
+            "title": "Bilateral scientific collaboration between AU and EU",
+            "journal": "South African Journal of International Affairs",
+            "year": 2023,
+            "citations": 48
+          }
+        ],
+        "grantHistory": [
+          {
+            "title": "Erasmus+ Capacity Building Grant",
+            "fundingAgency": "European Commission",
+            "amount": "€450,000",
+            "year": 2021
+          }
+        ],
+        "hIndex": 9,
+        "extractedKeywords": [
+          "Internationalisation",
+          "Science diplomacy",
+          "Bilateral agreements",
+          "AU-EU consortia",
+          "Project management"
+        ],
+        "summary": "Accomplished international relations manager with 6 years coordinating multilateral research agreements and European Union funded science partnerships."
+      },
+      "cvTextRaw": "Zanele Ndlovu, M.A. International Relations (Wits 2019). 6 years managing internationalisation and multilateral science agreements for science councils. Direct experience with AU, UN, and EU Horizon frameworks."
+    },
+    {
+      "id": "cand-5",
+      "jobId": "job-3",
+      "name": "Kabelo Molefe",
+      "email": "k.molefe@prisa.co.za",
+      "phone": "+27 (0) 12 420 4111",
+      "orcid": "",
+      "scholarLink": "",
+      "hIndex": 2,
+      "stage": "applied",
+      "dateApplied": "2026-07-06",
+      "researchProposal": "Digital Community Engagement and Media Outreach for National Science Awareness.",
+      "education": "Bachelor of Arts in Communication and Public Relations, UNISA (2020)",
+      "grantHistory": "",
+      "publications": [],
+      "cvParsedData": {
+        "education": [
+          {
+            "degree": "B.A. in Communication Science",
+            "institution": "University of South Africa (UNISA)",
+            "year": 2020
+          }
+        ],
+        "publications": [],
+        "grantHistory": [],
+        "hIndex": 2,
+        "extractedKeywords": [
+          "Public relations",
+          "Stakeholder management",
+          "Media briefings",
+          "Government relations",
+          "Event coordination"
+        ],
+        "summary": "Dynamic communications practitioner with 4 years managing stakeholder registers, inter-governmental liaison, and press relations."
+      },
+      "cvTextRaw": "Kabelo Molefe. B.A. Communication Science (UNISA 2020). 4 years in stakeholder engagement and public affairs. Managed communication registers for provincial departments and orchestrated research summit events."
+    },
+    {
+      "id": "cand-6",
+      "jobId": "job-1",
+      "name": "Liam Naidoo",
+      "email": "liam.naidoo99@gmail.com",
+      "phone": "+27 (0) 31 260 1111",
+      "orcid": "",
+      "scholarLink": "",
+      "hIndex": 0,
+      "stage": "applied",
+      "dateApplied": "2026-07-08",
+      "researchProposal": "Brief exploration into modern web technologies for administrative filing.",
+      "education": "Certificate in Office Administration (2023)",
+      "grantHistory": "",
+      "publications": [],
+      "cvParsedData": {
+        "education": [
+          {
+            "degree": "Certificate in Office Administration",
+            "institution": "Durban Technical College",
+            "year": 2023
+          }
+        ],
+        "publications": [],
+        "grantHistory": [],
+        "hIndex": 0,
+        "extractedKeywords": [
+          "Office administration",
+          "Filing",
+          "Microsoft Word"
+        ],
+        "summary": "Junior administrative assistant looking to transition into research organization management."
+      },
+      "cvTextRaw": "Liam Naidoo. Certificate in Office Administration. 1 year experience filing and managing office emails. Looking for growth opportunities.",
+      "atsAssessment": {
+        "candidateId": "cand-6",
+        "jobId": "job-1",
+        "scannedAt": "2026-10-29T10:42:52.236Z",
+        "overallScore": 37,
+        "probabilityOfAlignment": 37,
+        "confidenceScore": 92,
+        "verdict": "Low Alignment",
+        "breakdown": {
+          "requirementsMatch": {
+            "score": 24,
+            "summary": "Candidate satisfies 0 of 4 stated mandatory qualifications.",
+            "criteria": [
+              {
+                "criterion": "Ph.D. in Social Sciences, Development Studies, Public Policy, or related academic discipline",
+                "matched": false,
+                "score": 25,
+                "evidence": "Doctoral degree qualification not identified."
+              },
+              {
+                "criterion": "Minimum 8 years of research leadership experience with a proven high-impact publication record",
+                "matched": false,
+                "score": 30,
+                "evidence": "0 peer-reviewed publications identified with verified citations."
+              },
+              {
+                "criterion": "Demonstrated track record of securing international donor funding and research grants",
+                "matched": false,
+                "score": 40,
+                "evidence": "Limited external grant-winning track record identified."
+              },
+              {
+                "criterion": "Excellent stakeholder relations and capacity building capability in South Africa and across the African continent",
+                "matched": false,
+                "score": 0,
+                "evidence": "Lacks sufficient documented evidence in: excellent, stakeholder"
+              }
+            ]
+          },
+          "jobDescriptionFit": {
+            "score": 28,
+            "summary": "Alignment with Impact Centre core activities and research delivery mandate.",
+            "domainRelevance": "Direct operational and academic relevance for Director: Strategic Partnerships and External Capacity Development."
+          },
+          "keyResponsibilitiesAlignment": {
+            "score": 35,
+            "summary": "Demonstrates capability to execute strategic priorities and lead institutional deliverables.",
+            "competenciesIdentified": [
+              "Office administration",
+              "Filing",
+              "Microsoft Word",
+              "Strategic Partnerships",
+              "Stakeholder Relations"
+            ],
+            "competenciesMissing": [
+              "Formal grant governance",
+              "Multi-stakeholder executive reporting"
+            ]
+          },
+          "academicBibliometrics": {
+            "score": 30,
+            "hIndexEvaluation": "Verified h-Index of 0 demonstrates healthy citation momentum.",
+            "publicationEvaluation": "0 peer-reviewed contributions across academic literature.",
+            "grantCapacity": "Institutional research grant capability verified."
+          }
+        },
+        "matchedKeywords": [
+          "Office administration",
+          "Filing",
+          "Microsoft Word",
+          "Strategic Partnerships",
+          "Stakeholder Relations"
+        ],
+        "missingKeywords": [
+          "Formal grant governance",
+          "Multi-stakeholder executive reporting"
+        ],
+        "executiveSummary": "Liam Naidoo exhibits a 37% calculated probability of alignment for the Director: Strategic Partnerships and External Capacity Development role. Evaluated credentials match 0/4 core criteria.",
+        "atsRecommendation": "Retain candidate in general talent pool or request supplementary referee evaluations."
+      }
     }
   ],
   "evaluations": [

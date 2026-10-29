@@ -30,17 +30,41 @@ interface CandidateDashboardTableProps {
   candidates: Candidate[];
   jobs: JobOpening[];
   userRole: "applicant" | "recruiter";
+  autoEmailEnabled?: boolean;
+  onToggleAutoEmail?: (enabled: boolean) => void;
   onUpdateCandidateStage?: (candId: string, newStage: Candidate["stage"]) => Promise<void>;
   onNavigateToApply?: () => void;
+  onNavigateToATS?: () => void;
 }
 
 export const CandidateDashboardTable: React.FC<CandidateDashboardTableProps> = ({
   candidates,
   jobs,
   userRole,
+  autoEmailEnabled,
+  onToggleAutoEmail,
   onUpdateCandidateStage,
   onNavigateToApply,
+  onNavigateToATS,
 }) => {
+  const [localAutoEmail, setLocalAutoEmail] = useState(true);
+  const isAutoEmailOn = autoEmailEnabled !== undefined ? autoEmailEnabled : localAutoEmail;
+  const handleToggleAutoEmail = (val: boolean) => {
+    if (onToggleAutoEmail) {
+      onToggleAutoEmail(val);
+    } else {
+      setLocalAutoEmail(val);
+    }
+  };
+
+  const [notificationFeedback, setNotificationFeedback] = useState<{
+    type: "email_sent" | "email_disabled";
+    candidateName: string;
+    email: string;
+    stage: string;
+    timestamp: string;
+  } | null>(null);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStageFilter, setSelectedStageFilter] = useState<string>("all");
   const [sortField, setSortField] = useState<"name" | "dateApplied" | "hIndex" | "stage">("dateApplied");
@@ -137,6 +161,26 @@ export const CandidateDashboardTable: React.FC<CandidateDashboardTableProps> = (
     try {
       await onUpdateCandidateStage(selectedCandidate.id, newStage);
       setSelectedCandidate({ ...selectedCandidate, stage: newStage });
+
+      if (newStage === "shortlisted" || newStage === "rejected") {
+        if (isAutoEmailOn) {
+          setNotificationFeedback({
+            type: "email_sent",
+            candidateName: selectedCandidate.name,
+            email: selectedCandidate.email,
+            stage: newStage === "shortlisted" ? "Shortlisted" : "Not Progressed",
+            timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+          });
+        } else {
+          setNotificationFeedback({
+            type: "email_disabled",
+            candidateName: selectedCandidate.name,
+            email: selectedCandidate.email,
+            stage: newStage === "shortlisted" ? "Shortlisted" : "Not Progressed",
+            timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+          });
+        }
+      }
     } catch (err) {
       console.error("Error updating stage:", err);
     } finally {
@@ -164,6 +208,140 @@ export const CandidateDashboardTable: React.FC<CandidateDashboardTableProps> = (
 
   return (
     <div className="space-y-6">
+      {/* ATS Screening Callout Banner */}
+      {onNavigateToATS && (
+        <div className="bg-gradient-to-r from-[#003366] via-[#0A4B83] to-[#002244] text-white p-4 sm:p-5 rounded-[8px] shadow-sm border border-[#002244] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-[8px] bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 text-[#00A8B5]" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-white flex items-center gap-2">
+                Automated ATS Candidate Screening & Shortlisting
+                <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-[#00A8B5] text-slate-950 uppercase">
+                  Recruiter Admin
+                </span>
+              </p>
+              <p className="text-xs text-slate-200 mt-0.5">
+                Scan requirements alignment, compute compatibility percentages, and execute automated or manual shortlisting.
+              </p>
+            </div>
+          </div>
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={onNavigateToATS}
+            className="bg-[#00A8B5] hover:bg-[#00919d] text-slate-950 font-bold border-none shrink-0"
+            rightIcon={<ChevronRight className="w-4 h-4 text-slate-950" />}
+          >
+            Launch ATS Center
+          </Button>
+        </div>
+      )}
+
+      {/* Automated Email Notifications Toggle Bar in Candidate View */}
+      {userRole === "recruiter" && (
+        <div className="bg-white border border-slate-200 rounded-[8px] p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start sm:items-center gap-3">
+            <div
+              className={`w-9 h-9 rounded-[8px] flex items-center justify-center shrink-0 border ${
+                isAutoEmailOn
+                  ? "bg-teal-50 text-[#008080] border-teal-200"
+                  : "bg-slate-100 text-slate-400 border-slate-200"
+              }`}
+            >
+              <Mail className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-slate-900">
+                  Automated Status Email Notifications
+                </span>
+                <span
+                  className={`text-[10px] font-bold px-2 py-0.5 rounded-[4px] uppercase tracking-wide border ${
+                    isAutoEmailOn
+                      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                      : "bg-slate-100 text-slate-600 border-slate-200"
+                  }`}
+                >
+                  {isAutoEmailOn ? "Active" : "Disabled"}
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500 mt-0.5">
+                Automatically emails applicants official council outcome letters when their dossier transitions to{" "}
+                <strong className="text-emerald-700 font-semibold">'Shortlisted'</strong> or{" "}
+                <strong className="text-rose-700 font-semibold">'Not Progressed'</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 self-end sm:self-auto shrink-0">
+            <span className="text-xs font-semibold text-slate-700">
+              {isAutoEmailOn ? "Auto-Email Enabled" : "Auto-Email Disabled"}
+            </span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={isAutoEmailOn}
+              onClick={() => handleToggleAutoEmail(!isAutoEmailOn)}
+              className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#003366] ${
+                isAutoEmailOn ? "bg-[#008080]" : "bg-slate-300"
+              }`}
+            >
+              <span
+                aria-hidden="true"
+                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                  isAutoEmailOn ? "translate-x-5" : "translate-x-0"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Real-time Status Change Toast Feedback Banner */}
+      {notificationFeedback && (
+        <div
+          className={`p-4 rounded-[8px] border text-xs flex items-center justify-between gap-3 shadow-xs transition-all ${
+            notificationFeedback.type === "email_sent"
+              ? "bg-emerald-50 border-emerald-300 text-emerald-900"
+              : "bg-slate-100 border-slate-300 text-slate-800"
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <div
+              className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-white ${
+                notificationFeedback.type === "email_sent" ? "bg-emerald-600" : "bg-slate-500"
+              }`}
+            >
+              {notificationFeedback.type === "email_sent" ? (
+                <Mail className="w-3.5 h-3.5" />
+              ) : (
+                <AlertCircle className="w-3.5 h-3.5" />
+              )}
+            </div>
+            <div>
+              <p className="font-bold">
+                {notificationFeedback.type === "email_sent"
+                  ? `Automated Email Dispatched to ${notificationFeedback.candidateName} (${notificationFeedback.email})`
+                  : `Status Updated to '${notificationFeedback.stage}' — No Email Dispatched`}
+              </p>
+              <p className="text-[11px] opacity-90 mt-0.5">
+                {notificationFeedback.type === "email_sent"
+                  ? `Official HSRC ${notificationFeedback.stage} decision notice dispatched at ${notificationFeedback.timestamp}.`
+                  : `Automated email notifications are currently disabled; candidate record was updated silently.`}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => setNotificationFeedback(null)}
+            className="text-xs font-semibold px-2.5 py-1 hover:bg-black/5 rounded-[4px] cursor-pointer"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
+
       {/* Search & Filter Toolbar */}
       <div className="bg-white rounded-[8px] border border-slate-200 p-5 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -358,11 +536,24 @@ export const CandidateDashboardTable: React.FC<CandidateDashboardTableProps> = (
                         </div>
                       </td>
 
-                      {/* Status Pill Tag */}
+                      {/* Status Pill Tag & ATS Probability */}
                       <td className="py-4 px-4">
-                        <Badge variant={badgeInfo.variant}>
-                          {badgeInfo.label}
-                        </Badge>
+                        <div className="space-y-1">
+                          <Badge variant={badgeInfo.variant}>
+                            {badgeInfo.label}
+                          </Badge>
+                          {cand.atsAssessment && (
+                            <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-700">
+                              <Sparkles className="w-3 h-3 text-[#00A8B5]" />
+                              <span>{cand.atsAssessment.probabilityOfAlignment}% Match</span>
+                              {cand.atsAssessment.autoShortlisted && (
+                                <span className="text-[9px] bg-teal-50 text-[#008080] px-1 rounded font-semibold border border-teal-200">
+                                  Auto
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </td>
 
                       {/* Actions */}
@@ -458,6 +649,23 @@ export const CandidateDashboardTable: React.FC<CandidateDashboardTableProps> = (
                     {getStageBadgeVariant(selectedCandidate.stage).label}
                   </Badge>
                 )}
+                {userRole === "recruiter" && (
+                  <div className="flex items-center gap-1.5 pl-2 border-l border-slate-200">
+                    <button
+                      type="button"
+                      onClick={() => handleToggleAutoEmail(!isAutoEmailOn)}
+                      title="Toggle automated email notifications on Shortlist or Not Progressed status change"
+                      className={`text-[11px] font-semibold flex items-center gap-1 px-2 py-1 rounded-[6px] transition-colors cursor-pointer border ${
+                        isAutoEmailOn
+                          ? "bg-teal-50 text-[#008080] border-teal-200 hover:bg-teal-100"
+                          : "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200"
+                      }`}
+                    >
+                      <Mail className="w-3 h-3" />
+                      <span>{isAutoEmailOn ? "Auto-Email Active" : "Auto-Email Muted"}</span>
+                    </button>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center gap-2">
@@ -512,6 +720,34 @@ export const CandidateDashboardTable: React.FC<CandidateDashboardTableProps> = (
                 </div>
               </div>
             </div>
+
+            {/* ATS Assessment Summary if present */}
+            {selectedCandidate.atsAssessment && (
+              <div className="bg-teal-50/80 border border-teal-200 rounded-[8px] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                <div>
+                  <p className="font-bold text-[#008080] flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-[#00A8B5]" />
+                    ATS Assessment: {selectedCandidate.atsAssessment.probabilityOfAlignment}% Probability of Alignment ({selectedCandidate.atsAssessment.verdict})
+                  </p>
+                  <p className="text-slate-600 mt-1 leading-relaxed">
+                    {selectedCandidate.atsAssessment.executiveSummary}
+                  </p>
+                </div>
+                {onNavigateToATS && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => {
+                      setSelectedCandidate(null);
+                      onNavigateToATS();
+                    }}
+                    className="shrink-0"
+                  >
+                    Open in ATS Console →
+                  </Button>
+                )}
+              </div>
+            )}
 
             {/* Position Applied Information */}
             <div>

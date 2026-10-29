@@ -31,6 +31,52 @@ export interface AcademicCVData {
   summary?: string;
 }
 
+export interface ATSCriterionMatch {
+  criterion: string;
+  matched: boolean;
+  score: number; // 0 - 100
+  evidence: string;
+}
+
+export interface ATSAssessment {
+  candidateId: string;
+  jobId: string;
+  scannedAt: string;
+  overallScore: number; // 0 - 100
+  probabilityOfAlignment: number; // 0 - 100
+  confidenceScore: number; // 0 - 100
+  verdict: "Strongly Recommended" | "Recommended" | "Moderate Match" | "Low Alignment" | "Not Qualified";
+  breakdown: {
+    requirementsMatch: {
+      score: number;
+      summary: string;
+      criteria: ATSCriterionMatch[];
+    };
+    jobDescriptionFit: {
+      score: number;
+      summary: string;
+      domainRelevance: string;
+    };
+    keyResponsibilitiesAlignment: {
+      score: number;
+      summary: string;
+      competenciesIdentified: string[];
+      competenciesMissing: string[];
+    };
+    academicBibliometrics: {
+      score: number;
+      hIndexEvaluation: string;
+      publicationEvaluation: string;
+      grantCapacity: string;
+    };
+  };
+  matchedKeywords: string[];
+  missingKeywords: string[];
+  executiveSummary: string;
+  atsRecommendation: string;
+  autoShortlisted?: boolean;
+}
+
 export interface Candidate {
   id: string;
   jobId: string;
@@ -40,7 +86,7 @@ export interface Candidate {
   orcid?: string;
   scholarLink?: string;
   hIndex?: number;
-  stage: 'applied' | 'committee_review' | 'seminar' | 'offer';
+  stage: 'applied' | 'committee_review' | 'seminar' | 'offer' | 'shortlisted' | 'rejected';
   researchProposal?: string;
   education?: string;
   grantHistory?: string;
@@ -49,6 +95,7 @@ export interface Candidate {
   cvTextRaw?: string;
   statusNotes?: string;
   dateApplied: string;
+  atsAssessment?: ATSAssessment;
 }
 
 export interface Evaluation {
@@ -75,3 +122,4 @@ export interface Referee {
   letterContent?: string;
   dateUploaded?: string;
 }
+

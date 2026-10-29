@@ -23,6 +23,7 @@ import { Button } from "./design-system/Button";
 export type PortalTab = 
   | "vacancies" 
   | "dashboard" 
+  | "admin_ats"
   | "apply" 
   | "post_job" 
   | "design_system";
@@ -117,7 +118,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
             <nav className="hidden md:flex items-center space-x-1 pl-4 border-l border-white/10">
               <button
                 onClick={() => onTabChange("vacancies")}
-                className={`px-3.5 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-3 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-1.5 ${
                   activeTab === "vacancies"
                     ? "bg-white/15 text-white shadow-xs font-semibold"
                     : "text-slate-200 hover:bg-white/10 hover:text-white"
@@ -128,39 +129,54 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
               </button>
 
               <button
+                onClick={() => onTabChange("admin_ats")}
+                className={`px-3 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-1.5 ${
+                  activeTab === "admin_ats"
+                    ? "bg-white/15 text-white shadow-xs font-semibold ring-1 ring-[#00A8B5]/40"
+                    : "text-slate-200 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Sparkles className="w-4 h-4 text-[#00A8B5]" />
+                <span>Admin ATS & Shortlist</span>
+                <span className="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-[#00A8B5] text-slate-950 uppercase">
+                  ATS
+                </span>
+              </button>
+
+              <button
                 onClick={() => onTabChange("dashboard")}
-                className={`px-3.5 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-3 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-1.5 ${
                   activeTab === "dashboard"
                     ? "bg-white/15 text-white shadow-xs font-semibold"
                     : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <FileText className="w-4 h-4 text-[#00A8B5]" />
-                Application Table
+                Applicants Table
               </button>
 
               <button
                 onClick={() => onTabChange("apply")}
-                className={`px-3.5 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-3 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-1.5 ${
                   activeTab === "apply"
                     ? "bg-white/15 text-white shadow-xs font-semibold"
                     : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" />
-                Apply Flow (Step 1-3)
+                Apply Form
               </button>
 
               <button
                 onClick={() => onTabChange("design_system")}
-                className={`px-3.5 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-3 py-2 text-sm font-medium rounded-[8px] transition-all cursor-pointer flex items-center gap-1.5 ${
                   activeTab === "design_system"
                     ? "bg-white/15 text-white shadow-xs font-semibold"
                     : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Sliders className="w-4 h-4 text-[#00A8B5]" />
-                Design Tokens & Specs
+                Design Tokens
               </button>
             </nav>
           </div>
@@ -281,6 +297,16 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                       <span className="font-bold text-[#003366] bg-slate-200/60 px-2 py-0.5 rounded text-[11px]">
                         {userRole === "recruiter" ? "Recruiter / HR" : "Candidate"} (Switch)
                       </span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        onTabChange("admin_ats");
+                        setShowProfileMenu(false);
+                      }}
+                      className="w-full text-left px-3 py-2 text-xs font-semibold text-[#003366] bg-teal-50/70 hover:bg-teal-50 rounded-[6px] flex items-center gap-2 cursor-pointer border border-teal-200/60"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-[#008080]" />
+                      Admin ATS & Shortlisting
                     </button>
                     <button
                       onClick={() => {
